@@ -19,14 +19,28 @@ namespace TodoComos.Service
             _logger = logger;
         }
 
-        public async Task<string> GetJobs()
+        public async Task<List<JobItem>> GetJobs()
         {
             var response = await _httpClient.GetAsync("https://jobicy.com/api/v2/remote-jobs");
             if (response.IsSuccessStatusCode)
             {
-                var content = await response.Content.ReadAsStringAsync();
+                  var content = await response.Content.ReadAsStringAsync();
+                var jsonDocument = JsonDocument.Parse(content);
+                var jobs = new List<JobItem>();
 
-                return content;
+                foreach (var jobElement in jsonDocument.RootElement.GetProperty("jobs").EnumerateArray())
+                {
+                    var job = new JobItem
+                    {
+                        JobTitle = jobElement.GetProperty("jobTitle").GetString(),
+                        JobDescription = jobElement.GetProperty("jobExcerpt").GetString(),
+                        Url = jobElement.GetProperty("url").GetString(),
+                        Location = jobElement.GetProperty("jobGeo").GetString()
+                    };
+                    jobs.Add(job);
+                }
+
+                return jobs;
             }
             else
             {
