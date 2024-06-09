@@ -2,7 +2,7 @@ using TodoComos.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddControllersWithViews(); // Add MVC services
 builder.Services.AddControllers();
 var cosmosDbSettings = builder.Configuration.GetSection("CosmosDb");
 builder.Services.AddSingleton<ICosmosDbService>(new CosmosDbService(
@@ -33,5 +33,13 @@ app.UseMiddleware<CheckCookieMiddleware>();
 
 
 app.MapControllers();
+app.UseStaticFiles(); // Serve static files
+app.UseRouting(); // Enable routing
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();
