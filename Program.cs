@@ -11,6 +11,9 @@ builder.Services.AddSingleton<ICosmosDbService>(new CosmosDbService(
     cosmosDbSettings["Account"],
     cosmosDbSettings["Key"]
 ));
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<JobsService>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
