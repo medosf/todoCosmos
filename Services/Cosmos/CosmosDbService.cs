@@ -57,4 +57,18 @@ public class CosmosDbService : ICosmosDbService
 
         
     }
+
+    public async Task DeleteTodoItemAsync(string id){
+
+        try{
+            await _container.DeleteItemAsync<TodoItem>(id, new PartitionKey(id));
+
+        }catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            throw new Exception($"Item with id {id} not found");
+        }
+    }
+
+
+
 }

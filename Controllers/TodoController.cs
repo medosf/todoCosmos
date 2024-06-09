@@ -68,4 +68,11 @@ public class TodoController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = item.Id }, item);
     }
 
+     [HttpDelete("{id}")]
+     public async Task<IActionResult> Delete(string id)
+     {
+         await _cosmosDbService.DeleteTodoItemAsync(id);
+         return NoContent();
+     }
+
 }

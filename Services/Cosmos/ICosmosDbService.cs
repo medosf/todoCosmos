@@ -10,4 +10,6 @@ public interface ICosmosDbService
     Task AddTodoItemAsync(TodoItem item);
 
     Task<TodoItem> GetTodoItemAsync(string id);
+
+    Task DeleteTodoItemAsync(string id);
 }
