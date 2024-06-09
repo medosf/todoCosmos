@@ -2,6 +2,15 @@ using TodoComos.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 builder.Services.AddControllersWithViews(); // Add MVC services
 builder.Services.AddControllers();
 var cosmosDbSettings = builder.Configuration.GetSection("CosmosDb");
@@ -34,7 +43,7 @@ app.UseAuthorization();
 
 app.UseMiddleware<CheckCookieMiddleware>();
 
-
+app.UseCors();  // Enable CORS
 app.MapControllers();
 app.UseStaticFiles(); // Serve static files
 app.UseRouting(); // Enable routing
