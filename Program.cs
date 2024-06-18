@@ -41,7 +41,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseMiddleware<CheckCookieMiddleware>();
+// logic to add cookie check
+// app.UseMiddleware<CheckCookieMiddleware>();
 
 app.UseCors();  // Enable CORS
 app.MapControllers();
