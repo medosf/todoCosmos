@@ -1,10 +1,10 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
-using TodoComos.Service;
+using TodoCosmos.Service;
 
 
-namespace TodoComos.Controllers
+namespace TodoCosmos.Controllers
 {
  [ApiController]
  [Route("api/[controller]")]

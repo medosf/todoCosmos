@@ -1,8 +1,8 @@
-using TodoComos.Models;
+using TodoCosmos.Models;
 using Newtonsoft.Json;
 
 
-namespace TodoComos.Service
+namespace TodoCosmos.Service
 {
     public class NameService
     {

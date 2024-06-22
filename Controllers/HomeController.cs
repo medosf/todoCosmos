@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-namespace TodoComos.Controllers;
+namespace TodoCosmos.Controllers;
 
 public class HomeController : Controller{
  [HttpGet]

@@ -1,5 +1,5 @@
 
-namespace TodoComos.Models
+namespace TodoCosmos.Models
 {
     public class NameItem {
         public string Name {get; set;}

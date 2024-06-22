@@ -1,4 +1,4 @@
-namespace TodoComos.Models
+namespace TodoCosmos.Models
 {
 
      public class JobItem {

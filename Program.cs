@@ -1,4 +1,4 @@
-using TodoComos.Service;
+using TodoCosmos.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

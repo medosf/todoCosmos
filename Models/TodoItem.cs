@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace TodoComos.Models
+namespace TodoCosmos.Models
 {
     public class TodoItem
     {

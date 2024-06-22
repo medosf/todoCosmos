@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using  TodoComos.Service;
-using  TodoComos.Models;
+using  TodoCosmos.Service;
+using  TodoCosmos.Models;
 
-namespace TodoComos.Controllers;
+namespace TodoCosmos.Controllers;
 
 [ApiController]
 [Route("todo")]

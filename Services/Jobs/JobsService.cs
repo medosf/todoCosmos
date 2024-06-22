@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using TodoComos.Models;
+using TodoCosmos.Models;
 
 
-namespace TodoComos.Service
+namespace TodoCosmos.Service
 {
     public class JobsService
     {

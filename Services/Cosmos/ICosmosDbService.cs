@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TodoComos.Models;
+using TodoCosmos.Models;
 
-namespace TodoComos.Service;
+namespace TodoCosmos.Service;
 
 public interface ICosmosDbService
 {
