@@ -1,0 +1,46 @@
+name: Auto Merge main into feature branches
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge-main-to-features:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout full history so we can access all branches
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Step 2: Configure Git (needed for commits)
+      - name: Git config
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+
+      # Step 3: Fetch all remote branches
+      - name: Fetch all branches
+        run: git fetch --all
+
+      # Step 4: Authenticate GitHub CLI (for creating PRs)
+
+      # Step 5: Get all feature/* branches and loop
+      - name: Merge main into feature branches
+        run: |
+          for branch in $(git branch -r | grep origin/feature/ | sed 's|origin/||'); do
+            echo "🔄 Processing branch: $branch"
+
+            git checkout $branch
+            git pull origin $branch
+
+            # Try to merge main
+            if git merge origin/main --no-commit --no-ff; then
+              echo "✅ Merge successful for $branch"
+              git commit -m "🤖 Auto-merged main into $branch"
+              git push origin $branch
+            
+            fi
+          done
