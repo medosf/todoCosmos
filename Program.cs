@@ -2,6 +2,7 @@ using TodoCosmos.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// test comment
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
