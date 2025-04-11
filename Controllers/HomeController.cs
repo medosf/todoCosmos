@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 namespace TodoCosmos.Controllers;
-// testa
+// test
 public class HomeController : Controller{
  [HttpGet]
 public IActionResult Index()
